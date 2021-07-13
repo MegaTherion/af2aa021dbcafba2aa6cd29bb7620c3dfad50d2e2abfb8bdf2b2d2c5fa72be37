@@ -4,6 +4,8 @@ namespace App\Repositories;
 
 use App\BusinessLogic\ItemRules;
 use App\Exceptions\ImpresorasOcupadasException;
+use App\Exceptions\NotEnoughStock;
+use App\Exceptions\NotEnoughStockException;
 use App\Mapper\ItemMapper;
 use App\Models\Item;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
@@ -136,5 +138,26 @@ class ItemRepository implements ItemRepositoryInterface
             }
         }
         return $impresora;
+    }
+
+    /**
+     * Decrementa cierta cantidad de stock de un producto
+     *
+     * @param Item $item
+     * @param integer $cantidad
+     * @return Item
+     */
+    public function decrementStock(Item $item, int $cantidad): Item
+    {
+        if ($item->insumo_base) {
+            return $item;
+        }
+        if ($item->stock == 0)
+        {
+            throw new NotEnoughStockException();
+        }
+        $item->stock -= $cantidad;
+        $item->save();
+        return $item;
     }
 }

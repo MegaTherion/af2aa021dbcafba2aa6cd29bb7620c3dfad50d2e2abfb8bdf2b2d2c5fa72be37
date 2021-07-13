@@ -25,6 +25,7 @@ Route::post('/items/bulkload', [ItemController::class, 'bulkLoad'])->name('items
 Route::get('/items/{id}', [ItemController::class, 'show'])->name('item.show');
 Route::get('/items/{id}/calculateTimeProduction', [ItemController::class, 'calculateTimeProduction'])->name('item.calculateTimeProduction');
 Route::post('/items/{id}/executeProduction', [ItemController::class, 'executeProduction'])->name('item.executeProduction');
+Route::put('/items/{id}/tomar', [ItemController::class, 'tomar'])->name('item.tomar');
 Route::get('/items', [ItemController::class, 'index'])->name('item.index');
 
 // Rutas para impresoras

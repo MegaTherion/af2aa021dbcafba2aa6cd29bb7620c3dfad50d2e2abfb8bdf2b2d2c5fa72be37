@@ -152,4 +152,24 @@ class ItemController extends Controller
             'data' => ImpresoraMapper::modelToImpresoraResponse($impresora)
         ]);
     }
+
+    public function tomar($id, Request $request)
+    {
+        try {
+            $item = $this->itemRepository->find($id);
+        }
+        catch (ModelNotFoundException $e) {
+            return response()->json(['success' => false, 'message' => 'Modelo no encontrado']);
+        }
+        try {
+            $item = $this->itemRepository->decrementStock($item, $request->input('cantidad'));
+        }
+        catch (Exception $e) {
+            return response()->json(['success' => false, 'message' => $e->getMessage()]);
+        }
+        return response()->json([
+            'success'=>true,
+            'data'=>ItemMapper::modelToItemResponse($item)
+        ]);
+    }
 }

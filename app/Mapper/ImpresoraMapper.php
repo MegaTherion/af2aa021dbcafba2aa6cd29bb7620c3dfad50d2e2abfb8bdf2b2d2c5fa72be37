@@ -17,6 +17,7 @@ class ImpresoraMapper
             'id' => $impresora->id,
             'busy' => $impresora->busy_until != null,
             'item' => $impresora->item_id ? $impresora->item->nombre : '',
+            'item_id' => $impresora->item_id,
             'countdown' => $diff > 0 ? $diff : 0,
         ];
     }

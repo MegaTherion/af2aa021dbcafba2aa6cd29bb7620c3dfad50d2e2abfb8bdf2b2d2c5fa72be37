@@ -22,7 +22,7 @@ class ItemRules
      * @param integer $cantidad
      * @return void
      */
-    public function calculateTimeProduction(Item $item, int $cantidad)
+    public function calculateTimeProduction(Item $item, int $cantidad): int
     {
         $this->generateItemsToBuild($item, $cantidad);
         $this->calculated = true;
