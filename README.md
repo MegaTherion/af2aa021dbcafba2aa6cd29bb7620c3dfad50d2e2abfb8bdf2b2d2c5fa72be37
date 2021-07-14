@@ -40,6 +40,10 @@ Mapeadores: `app/Mapper`
 `app/Mapper/ImpresoraMapper.php` Tranforma objetos del modelo de impresora a DTO para el cliente.
 `app/Mapper/ItemMapper.php` Tranforma objetos del modelo de item a DTO para el cliente.
 
+Lógica de negocio: `app/BusinessLogic
+
+`app/BusinessLogic/ItemRules.php` Reglas de negocio para el manejo de los items, cálculo de tiempo de producción, etc.
+
 Migraciones: `database/migrations` Esta carpeta contiene las definiciones de la base de datos y las tablas utilizadas.
 
 Algunas carpetas tienen archivos con código adicional como interfaces.
